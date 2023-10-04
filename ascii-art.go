@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 	"strings"
 )
@@ -64,6 +63,5 @@ func GenerateAsciiArt(text string, renderingType string) string {
 		}
 	}
 
-	fmt.Println(result)
 	return result
 }

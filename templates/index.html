@@ -30,15 +30,15 @@
 
   
   <div class="output">
+    {{if .AsciiArt}}
     <fieldset style="width: 1000px;">
       <div style="text-align: left;">
-    {{if .AsciiArt}}
-    <pre>
-      <p>{{.AsciiArt}}</p>
-    </pre>
-    {{end}}
+       <pre>
+        <p>{{.AsciiArt}}</p>
+       </pre>
       </div>
   </fieldset>
+  {{end}}
 </div>
   
 
