@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<title>Ascii-Art Generator</title>
+</head>
+
+<body>
+  <center>
+  <h1>Ascii-Art Generator</h1>
+
+  <form action="/ascii-art" method="get" class="form">
+    <div class="text"><p>
+      <label for="name">Enter text: <br></label>
+      <textarea id="story" name="text" rows="5" cols="33">Hello world!</textarea>
+    </div></p>
+    <div class="type"><p>
+      <fieldset style="width: 200px;">
+      <legend>Select rendering type:</legend>
+      <label><input type="radio" name="renderingType" value="shadow.txt" /> shadow</label><br>
+      <label><input type="radio" name="renderingType" value="standard.txt" /> standard</label><br>
+      <label><input type="radio" name="renderingType" value="thinkertoy.txt" /> thinkertoy</label><br>
+    </fieldset>
+    </div></p>
+    <div class="submit">
+      <p><input type="submit" value="Generate!" /></p>
+    </div>
+  </form>
+
+  
+  <div class="output">
+    <fieldset style="width: 1000px;">
+      <div style="text-align: left;">
+    {{if .AsciiArt}}
+    <pre>
+      <p>{{.AsciiArt}}</p>
+    </pre>
+    {{end}}
+      </div>
+  </fieldset>
+</div>
+  
+
+</center>
+</body>
+
+</html>
