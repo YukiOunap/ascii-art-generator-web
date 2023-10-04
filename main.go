@@ -46,26 +46,21 @@ func GenerateAsciiArtHandler(w http.ResponseWriter, r *http.Request) {
 
 	asciiArt := GenerateAsciiArt(text, renderingType)
 
-	var pageVariables PageVariables
-	pageVariables.AsciiArt = asciiArt
-
 	t, err := template.ParseFiles("templates/index.html")
 	if err != nil {
-		log.Print("template parsing error: ", err)
 		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("Not Found (404)"))
 		return
 	}
 
+	var pageVariables PageVariables
+	pageVariables.AsciiArt = asciiArt
+
+	err = t.Execute(w, pageVariables)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte("Internal Server Error (500)"))
 		return
-	}
-
-	err = t.Execute(w, pageVariables)
-	if err != nil {
-		log.Print("template executing error: ", err)
 	}
 
 	w.WriteHeader(http.StatusOK)
