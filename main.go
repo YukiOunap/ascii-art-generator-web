@@ -4,6 +4,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
 )
 
 type PageVariables struct {
@@ -13,7 +14,11 @@ type PageVariables struct {
 func main() {
 	http.HandleFunc("/", DisplayPage)
 	http.HandleFunc("/ascii-art", GenerateAsciiArtHandler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080" // ローカル用デフォルト
+	}
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
 
 func DisplayPage(w http.ResponseWriter, r *http.Request) {
